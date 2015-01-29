@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace RomanNumerals
 {
@@ -6,14 +7,20 @@ namespace RomanNumerals
     {
         private static void Main()
         {
-            var parser=new RomanNumeralParser();
-            Console.WriteLine(parser.Parse(1990));
-            Console.WriteLine(parser.Parse(2008));
-            Console.WriteLine(parser.Parse(99));
-            Console.WriteLine(parser.Parse(47));
-            
-
-            Console.ReadLine();
+            while (true)
+            {
+                Console.Write("Enter a positive integer or 'q' to quit...  ");
+                var input = Console.ReadLine();
+                Debug.Assert(input != null, "input != null");
+                if (input.Trim().ToLower().Equals("q"))
+                {
+                    return;
+                }
+                int number;
+                if (!int.TryParse(input, out number)) continue;
+                var parser = new RomanNumeralParser();
+                Console.WriteLine("The Roman Numeral for {0} is {1} ", number, parser.Parse(number));
+            }
         }
     }
 }
