@@ -67,7 +67,7 @@ namespace RomanNumerals
             for (var i = 0; i < number; i++) {
                 var valueToConvert = number * multiplier;
                 if (_romanLookup.ContainsKey(valueToConvert)) {
-                    output = _romanLookup[valueToConvert];
+                    return _romanLookup[valueToConvert];
                 }
                 else {
                     output += romanNumeral;
